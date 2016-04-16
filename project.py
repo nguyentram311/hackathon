@@ -7,6 +7,7 @@ import datetime
 from datetime import date, timedelta
 from time import mktime
 from mongoengine import *
+import requests
 
 LOW_TIME_SPAN_30 = datetime.timedelta(days = 30)
 
@@ -48,7 +49,7 @@ def extract_username(url):
 	return re.search(r'https://www.facebook.com/([^/?]+)', url).group(1)
 
 def build_post_url ():
-    url=input("Nhập trang facebook url của trang đối thủ: ") #nhập rồi sau đó cách một cái
+    url=requests.form['dinhmenh']
     username=extract_username(url)
     graph_facebook = "https://graph.facebook.com/"
     link_end = "/posts/?key=value&access_token="
