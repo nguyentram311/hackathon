@@ -7,7 +7,7 @@ import datetime
 from datetime import date, timedelta
 from time import mktime
 from mongoengine import *
-import requests
+from flask import request
 
 LOW_TIME_SPAN_30 = datetime.timedelta(days = 30)
 
@@ -49,7 +49,7 @@ def extract_username(url):
 	return re.search(r'https://www.facebook.com/([^/?]+)', url).group(1)
 
 def build_post_url ():
-    url=requests.form['dinhmenh']
+    url=request.form['dinhmenh']
     username=extract_username(url)
     graph_facebook = "https://graph.facebook.com/"
     link_end = "/posts/?key=value&access_token="
